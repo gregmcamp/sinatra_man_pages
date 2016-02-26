@@ -1,0 +1,174 @@
+<body>
+
+<a href="/">HOME</a>
+
+<h2>BUILTIN(1)                BSD General Commands Manual               BUILTIN(1)</h2>
+<h3>NAME
+    
+    cd - change directory</h3>
+<hr/>
+
+     <p>builtin, !, %, ., :, @, {, }, alias, alloc, bg, bind, bindkey, break,
+     breaksw, builtins, case, cd, chdir, command, complete, continue, default,
+     dirs, do, done, echo, echotc, elif, else, end, endif, endsw, esac, eval,
+     exec, exit, export, false, fc, fg, filetest, fi, for, foreach, getopts,
+     glob, goto, hash, hashstat, history, hup, if, jobid, jobs, kill, limit,
+     local, log, login, logout, ls-F, nice, nohup, notify, onintr, popd,
+     printenv, pushd, pwd, read, readonly, rehash, repeat, return, sched, set,
+     setenv, settc, setty, setvar, shift, source, stop, suspend, switch,
+     telltc, test, then, time, times, trap, true, type, ulimit, umask,
+     unalias, uncomplete, unhash, unlimit, unset, unsetenv, until, wait,
+     where, which, while -- shell built-in commands</p>
+
+<b><u>SYNOPSIS</b></u>
+     <p>builtin [-options] [args ...]</p>
+
+<b><u>DESCRIPTION</b></u>
+     <p>Shell builtin commands are commands that can be executed within the run-
+     ning shell's process.  Note that, in the case of csh(1) builtin commands,
+     the command is executed in a subshell if it occurs as any component of a
+     pipeline except the last.</p>
+
+     <p>If a command specified to the shell contains a slash ``/'', the shell
+     will not execute a builtin command, even if the last component of the
+     specified command matches the name of a builtin command.  Thus, while
+     specifying ``echo'' causes a builtin command to be executed under shells
+     that support the echo builtin command, specifying ``/bin/echo'' or
+     ``./echo'' does not.</p>
+
+     <p>While some builtin commands may exist in more than one shell, their oper-
+     ation may be different under each shell which supports them.  Below is a
+     table which lists shell builtin commands, the standard shells that sup-
+     port them and whether they exist as standalone utilities.</p>
+
+     <p>Only builtin commands for the csh(1) and sh(1) shells are listed here.
+     Consult a shell's manual page for details on the operation of its builtin
+     commands.  Beware that the sh(1) manual page, at least, calls some of
+     these commands ``built-in commands'' and some of them ``reserved words''.
+     Users of other shells may need to consult an info(1) page or other
+     sources of documentation.</p>
+
+     <p>Commands marked ``No**'' under External do exist externally, but are
+     implemented as scripts using a builtin command of the same name.</p>
+
+           <b><u>Command       External    csh(1)    sh(1)</b></u>
+           <p>!             No          No        Yes</P>
+           <p>%             No          Yes       No</P>
+           <p>.             No          No        Yes</P>
+           <p>:             No          Yes       Yes</P>
+           <p>@             No          Yes       Yes</P>
+           <p>{             No          No        Yes</P>
+           <p>}             No          No        Yes</P>
+           <p>alias         No**        Yes       Yes</P>
+           <p>alloc         No          Yes       No</p>
+           <p>bg            No**        Yes       Yes</p>
+           <p>bind          No          No        Yes</p>
+           <p>bindkey       No          Yes       No</p>
+           <p>break         No          Yes       Yes</p>
+           <p>breaksw       No          Yes       No</p>
+           <p>builtin       No          No        Yes</p>
+           <p>builtins      No          Yes       No</p>
+           <p>case          No          Yes       Yes</p>
+           <p>cd            No**        Yes       Yes</p>
+           <p>chdir         No          Yes       Yes</p>
+           <p>command       No**        No        Yes</p>
+           <p>complete      No          Yes       No</p>
+           <p>continue      No          Yes       Yes</p>
+           <p>default       No          Yes       No</p>
+           <p>dirs          No          Yes       No</p>
+           <p>do            No          No        Yes</p>
+           <p>done          No          No        Yes</p>
+           <p>echo          Yes         Yes       Yes</p>
+           <p>echotc        No          Yes       No</p>
+           <p>elif          No          No        Yes</p>
+           <p>else          No          Yes       Yes</p>
+           <p>end           No          Yes       No</p>
+           <p>endif         No          Yes       No</p>
+           <p>endsw         No          Yes       No</p>
+           <p>esac          No          No        Yes</p>
+           <p>eval          No          Yes       Yes</p>
+           <p>exec          No          Yes       Yes</p>
+           <p>exit          No          Yes       Yes</p>
+           <p>export        No          No        Yes</p>
+           <p>false         Yes         No        Yes</p>
+           <p>fc            No**        No        Yes</p>
+           <p>fg            No**        Yes       Yes</p>
+           <p>filetest      No          Yes       No</p>
+           <p>fi            No          No        Yes</p>
+           <p>for           No          No        Yes</p>
+           <p>foreach       No          Yes       No</p>
+           <p>getopts       No**        No        Yes</p>
+           <p>glob          No          Yes       No</p>
+           <p>goto          No          Yes       No</p>
+           <p>hash          No          No        Yes</p>
+           <p>hashstat      No          Yes       No</p>
+           <p>history       No          Yes       No</p>
+           <p>hup           No          Yes       No</p>
+           <p>if            No          Yes       Yes</p>
+           <p>jobid         No          No        Yes</p>
+           <p>jobs          No**        Yes       Yes</p>
+           <p>kill          Yes         Yes       No</p>
+           <p>limit         No          Yes       No</p>
+           <p>local         No          No        Yes</p>
+           <p>log           No          Yes       No</p>
+           <p>login         Yes         Yes       No</p>
+           <p>logout        No          Yes       No</p>
+           <p>ls-F          No          Yes       No</p>
+           <p>nice          Yes         Yes       No</p>
+           <p>nohup         Yes         Yes       No</p>
+           <p>notify        No          Yes       No</p>
+           <p>onintr        No          Yes       No</p>
+           <p>popd          No          Yes       No</p>
+           <p>printenv      Yes         Yes       No</p>
+           <p>pushd         No          Yes       No</p>
+           <p>pwd           Yes         No        Yes</p>
+           <p>read          No**        No        Yes</p>
+           <p>readonly      No          No        Yes</p>
+           <p>rehash        No          Yes       No</p>
+           <p>repeat        No          Yes       No</p>
+           <p>return        No          No        Yes</p>
+           <p>sched         No          Yes       No</p>
+           <p>set           No          Yes       Yes</p>
+           <p>setenv        No          Yes       No</p>
+           <p>settc         No          Yes       No</p>
+           <p>setty         No          Yes       No</p>
+           <p>setvar        No          No        Yes</p>
+           <p>shift         No          Yes       Yes</p>
+           <p>source        No          Yes       No</p>
+           <p>stop          No          Yes       No</p>
+           <p>suspend       No          Yes       No</p>
+           <p>switch        No          Yes       No</p>
+           <p>telltc        No          Yes       No</p>
+           <p>test          Yes         No        Yes</p>
+           <p>then          No          No        Yes</p>
+           <p>time          Yes         Yes       No</p>
+           <p>times         No          No        Yes</p>
+           <p>trap          No          No        Yes</p>
+           <p>true          Yes         No        Yes</p>
+           <p>type          No          No        Yes</p>
+           <p>ulimit        No          No        Yes</p>
+           <p>umask         No**        Yes       Yes</p>
+           <p>unalias       No**        Yes       Yes</p>
+           <p>uncomplete    No          Yes       No</p>
+           <p>unhash        No          Yes       No</p>
+           <p>unlimit       No          Yes       No</p>
+           <p>unset         No          Yes       Yes</p>
+           <p>unsetenv      No          Yes       No</p>
+           <p>until         No          No        Yes</p>
+           <p>wait          No**        Yes       Yes</p>
+           <p>where         No          Yes       No</p>
+           <p>which         Yes         Yes       No</p>
+           <p>while         No          Yes       Yes</p>
+
+<b><u>SEE ALSO</b></u>
+     <p>csh(1), echo(1), false(1), info(1), kill(1), login(1), nice(1), nohup(1),
+     printenv(1), pwd(1), sh(1), test(1), time(1), true(1), which(1)</p>
+
+<b><u>HISTORY</b></u>
+     <p>The builtin manual page first appeared in FreeBSD 3.4.</p>
+
+<p>BSD                            February 23, 2005                           BSD</p>
+
+<a href="/">HOME</a>
+
+</body>

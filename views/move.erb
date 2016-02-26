@@ -1,0 +1,90 @@
+<body>
+
+<a href="/">HOME</a>
+
+<h2> MV(1)                     BSD General Commands Manual                    MV(1)</h2>
+
+
+<h3>NAME
+     mv -- move files</h3>
+
+<hr/>
+
+<b><u>SYNOPSIS</b></u>
+     <p>mv [-f | -i | -n] [-v] source target</p>
+     <p>mv [-f | -i | -n] [-v] source ... directory</p>
+<p></p>
+<b><u>DESCRIPTION</u></b>
+     <p>In its first form, the mv utility renames the file named by the source
+     operand to the destination path named by the target operand.  This form
+     is assumed when the last operand does not name an already existing direc-
+     tory.</p>
+
+     <p>In its second form, mv moves each file named by a source operand to a
+     destination file in the existing directory named by the directory oper-
+     and.  The destination path for each operand is the pathname produced by
+     the concatenation of the last operand, a slash, and the final pathname
+     component of the named file.</p>
+
+     <p>The following options are available:</p>
+
+     <p>-f      Do not prompt for confirmation before overwriting the destination
+             path.  (The -f option overrides any previous -i or -n options.)</p>
+
+     <p>-i      Cause mv to write a prompt to standard error before moving a file
+             that would overwrite an existing file.  If the response from the
+             standard input begins with the character `y' or `Y', the move is
+             attempted.  (The -i option overrides any previous -f or -n
+             options.)</p>
+
+     <p>-n      Do not overwrite an existing file.  (The -n option overrides any
+             previous -f or -i options.)</p>
+
+     <p>-v      Cause mv to be verbose, showing files after they are moved.</p>
+
+     <p>It is an error for either the source operand or the destination path to
+     specify a directory unless both do.</p>
+
+     <p>If the destination path does not have a mode which permits writing, mv
+     prompts the user for confirmation as specified for the -i option.</p>
+
+     <p>As the rename(2) call does not work across file systems, mv uses cp(1)
+     and rm(1) to accomplish the move.  The effect is equivalent to:</p>
+
+           <p>rm -f destination_path && \</p>
+           <p>cp -pRP source_file destination && \</p>
+           <p>rm -rf source_file</p>
+
+<b><u>DIAGNOSTICS</b></u>
+     <p>The mv utility exits 0 on success, and >0 if an error occurs.
+
+     The command "mv dir/afile dir" will abort with an error message.</p>
+
+<b><u>LEGACY DIAGNOSTICS</b></u>
+     <p>In legacy mode, the command "mv dir/afile dir" will fail silently,
+     returning an exit code of 0.</p>
+
+     <p>For more information about legacy mode, see compat(5).</p>
+
+<b><u>SEE ALSO</b></u>
+     <p>cp(1), rm(1), symlink(7)</p>
+
+<b><u>COMPATIBILITY</b></u>
+     <p>The -n and -v options are non-standard and their use in scripts is not
+     recommended.</p>
+
+     <p>The mv utility now supports HFS+ Finder and Extended Attributes and
+     resource forks.  The mv utility will no longer strip resource forks off
+     of HFS files.  For an alternative method, refer to cp(1).</p>
+
+<b><u>STANDARDS</b></u>
+     <p>The mv utility is expected to be IEEE Std 1003.2 (``POSIX.2'') compatible.</p>
+
+<b><u>HISTORY</b></u>
+     <p>A mv command appeared in Version 1 AT&T UNIX.</p>
+
+<p>BSD                              July 9, 2002                              BSD</p>
+
+<a href="/">HOME</a>
+
+</body>

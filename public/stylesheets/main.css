@@ -1,0 +1,12 @@
+body {
+  background-color: lightgreen;
+}
+
+h2 {
+  text-align: center;
+}
+
+.links {
+  position: relative;
+  line-height: 200%;
+}
